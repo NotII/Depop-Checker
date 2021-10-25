@@ -3,8 +3,8 @@ with open("accounts.txt") as f:
     accounts = f.read()
     f.close()
     for account in accounts.strip().split("\n"):
-        if account.len >= 3:
-            r = requests.get(f"https://webapi.depop.com/api/v1/auth/checkusername/{account}")
+        if len(account) >= 3:
+            r = requests.get("https://webapi.depop.com/api/v1/auth/checkusername/{account}")
             if r.status_code == 200:
                 print(f"[Depop] Claimable: {account}")
                 f = open(f'out.txt', "a")
